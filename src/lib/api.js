@@ -1,4 +1,4 @@
-export const NATOURS_API = 'https://natours-api-me.onrender.com';
+export const NATOURS_API = 'https://natours-api-mw9e.onrender.com';
 
 export async function getAllTours() {
     const response = await fetch(`${NATOURS_API}/api/v1/tours`);
