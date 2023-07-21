@@ -35,7 +35,10 @@ export const AuthContextProvider = (props) => {
 
     const logoutHandler = async () => {
         try {
-            const response = await fetch(`${NATOURS_API}/api/v1/users/logout`);
+            const response = await fetch(`${NATOURS_API}/api/v1/users/logout`, {
+                method: 'GET',
+                credentials: 'include',
+            });
 
             if (!response.ok) {
                 throw new Error('Something went wrong, try again later!');
