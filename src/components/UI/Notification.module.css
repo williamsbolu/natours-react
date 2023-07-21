@@ -1,0 +1,24 @@
+.notification {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 4rem;
+    width: 100%;
+}
+
+.error {
+    background-color: #eb4d4b;
+}
+
+.success {
+    background-color: #20bf6b;
+}
+
+.cart-detail-box p {
+    color: #fff;
+    font-size: 1.7rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+}

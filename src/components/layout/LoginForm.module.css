@@ -1,0 +1,104 @@
+.login-form {
+    margin: 8rem auto;
+    max-width: 55rem;
+    background-color: #fff;
+    -webkit-box-shadow: 0 2.5rem 8rem 2rem rgba(0, 0, 0, 0.06);
+    box-shadow: 0 2.5rem 8rem 2rem rgba(0, 0, 0, 0.06);
+    padding: 5rem 7rem;
+    border-radius: 5px;
+}
+
+.form__input {
+    display: block;
+    font-family: inherit;
+    font-size: 1.5rem;
+    color: inherit;
+    padding: 1.25rem 1.75rem;
+    border: none;
+    width: 100%;
+    background-color: #fff;
+    background-color: #f2f2f2;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    border-radius: 4px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    /* Pseudo element (a visible thing that isn't really in the DOM).
+        Also needs -ms- */
+}
+
+.invalid {
+    border: 1px solid #eb4d4b;
+}
+
+.form__input:focus {
+    outline: none;
+}
+
+.form__input::-webkit-input-placeholder {
+    color: #bbb;
+}
+
+.form__group:not(:last-child) {
+    margin-bottom: 2.5rem;
+}
+
+.form__label {
+    display: block;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+.login-form p {
+    /* color: #B71C1C; */
+    color: #eb4d4b;
+    font-size: 1.6rem;
+    font-weight: 400;
+    padding-top: 1rem;
+}
+
+.btn,
+.btn:link,
+.btn:visited {
+    background-color: #55c57a;
+    color: #fff;
+    font-size: 1.4rem;
+    padding: 1.5rem 3rem;
+    border-radius: 10rem;
+    text-transform: uppercase;
+    display: inline-block;
+    -webkit-transition: all 0.4s;
+    transition: transform 0.4s;
+    font-weight: 400;
+    border: none;
+    cursor: pointer;
+
+
+}
+
+.btn--loader {
+    padding: .5rem 1.2rem .5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.btn:hover {
+    -webkit-transform: translateY(-3px);
+    transform: translateY(-3px);
+    -webkit-box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+}
+
+.btn:active {
+    -webkit-transform: translateY(-1px);
+    transform: translateY(-1px);
+    -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.btn:focus {
+    outline: none;
+    background-color: #2e864b;
+}

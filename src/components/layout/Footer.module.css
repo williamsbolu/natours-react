@@ -1,0 +1,40 @@
+.footer {
+    max-width: 120rem;
+    margin: 0 auto;
+    padding: 6rem 0 3rem 0;
+    display: grid;
+    grid-row-gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.footer div {
+    grid-row: 1 / 3;
+}
+
+.footer img {
+    height: 3rem;
+}
+
+.footer ul {
+    display: flex;
+    grid-column: 2 / 3;
+    justify-self: end;
+}
+
+.footer li {
+    list-style: none;
+}
+
+.footer li:not(:last-child) {
+    margin-right: 1.5rem;
+}
+
+.footer a {
+    font-size: 1.4rem;
+    color: var(--body-text);
+}
+
+.footer p {
+    font-size: 1.4rem;
+    justify-self: end;
+}
