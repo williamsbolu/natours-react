@@ -1,5 +1,5 @@
-export const NATOURS_API = 'http://127.0.0.1:3000';
-// export const NATOURS_API = 'https://natours-api-mw9e.onrender.com';
+// export const NATOURS_API = 'http://127.0.0.1:3000';
+export const NATOURS_API = 'https://natours-api-me.onrender.com';
 
 export async function getAllTours() {
     const response = await fetch(`${NATOURS_API}/api/v1/tours`);
