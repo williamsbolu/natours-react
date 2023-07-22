@@ -31,9 +31,13 @@ const Header = () => {
                     </li>
                 )}
 
-                {authCtx.userStatus.userIsLoggedIn && <Link to="/logout">Logout</Link>}
                 {authCtx.userStatus.userIsLoggedIn && (
-                    <Link to="/sign-up" className={styles['user-link']}>
+                    <button className={styles.btn} onClick={authCtx.logout}>
+                        Logout
+                    </button>
+                )}
+                {authCtx.userStatus.userIsLoggedIn && (
+                    <Link className={styles['user-link']}>
                         <img
                             src={`${NATOURS_API}/img/users/${authCtx.userStatus.userPhoto}`}
                             alt={`img of ${authCtx.userStatus.userName}`}

@@ -8,7 +8,13 @@
     /* padding: 0 6rem; */
 }
 
-.nav a {
+.nav .btn {
+    border: none;
+}
+
+.nav a,
+.nav .btn {
+    background-color: transparent;
     font-size: 1.6rem;
     color: var(--text-heading);
     text-transform: uppercase;
@@ -16,7 +22,12 @@
     font-weight: 400;
 }
 
-.nav li {
+.nav .btn:focus {
+    outline: none;
+}
+
+.nav li,
+.nav .btn {
     transition: all 0.2s;
     list-style: none;
 }
@@ -26,14 +37,19 @@
     transform: translateY(-2px) !important;
 }
 
+.nav .btn:hover {
+    text-shadow: 0 0.7rem 1rem black;
+    transform: translateY(-2px) !important;
+}
+
 .nav li:not(:last-child) {
     margin-right: 2.5rem;
 }
 
 .cta {
+    border: 1px solid var(--text-heading);
     padding: 1rem 3rem;
     border-radius: 10rem;
-    border: 1px solid var(--text-heading);
     -webkit-transition: all 0.3s;
     transition: all 0.3s;
 }

@@ -37,7 +37,7 @@ export const AuthContextProvider = (props) => {
         try {
             const response = await fetch(`${NATOURS_API}/api/v1/users/logout`, {
                 method: 'GET',
-                credentials: 'include',
+                // credentials: 'include',
             });
 
             if (!response.ok) {
@@ -79,14 +79,14 @@ export const AuthContextProvider = (props) => {
         }
     }, []);
 
-    useEffect(() => {
-        getLoggedStatus();
-    }, [getLoggedStatus]);
+    // useEffect(() => {
+    //     getLoggedStatus();
+    // }, [getLoggedStatus]);
 
     const contextValue = {
         userStatus,
         login: loginHandler,
-        logout: logoutHandler,
+        logout: getLoggedStatus,
         notification,
         setNotification: setNotificationHandler,
     };
