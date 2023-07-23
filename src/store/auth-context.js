@@ -64,12 +64,7 @@ export const AuthContextProvider = (props) => {
 
     const getLoggedStatus = useCallback(async () => {
         try {
-            const response = await fetch(
-                `${NATOURS_API}/api/v1/users/getLoggedInStatus`,
-                {
-                    credentials: 'include',
-                }
-            );
+            const response = await fetch(`${NATOURS_API}/api/v1/users/getLoggedInStatus`);
             if (!response.ok) {
                 throw new Error('Something went wrong');
             }
