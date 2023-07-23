@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import axios from 'axios';
 import { NATOURS_API } from '../lib/api';
 
 const AuthContext = React.createContext({
@@ -64,15 +65,15 @@ export const AuthContextProvider = (props) => {
 
     const getLoggedStatus = useCallback(async () => {
         try {
-            const response = await fetch(`${NATOURS_API}/api/v1/users/getLoggedInStatus`);
-            if (!response.ok) {
-                throw new Error('Something went wrong');
-            }
-            const loginStatusData = await response.json();
-            console.log(loginStatusData);
+            const res = await axios({
+                method: 'GET',
+                url: `${NATOURS_API}/api/v1/users/getLoggedInStatus`,
+                withCredentials: true,
+            });
 
-            if (loginStatusData.isLoggedIn)
-                loginHandler(loginStatusData.isLoggedIn, loginStatusData.user);
+            console.log(res.data);
+
+            if (res.data) loginHandler(res.data.isLoggedIn, res.data.user);
         } catch (err) {
             console.log(err);
             return;

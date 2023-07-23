@@ -1,24 +1,25 @@
-export const NATOURS_API = 'https://natours-api-mw9e.onrender.com';
-// export const NATOURS_API = 'http://127.0.0.1:3000';
+import axios from 'axios';
+// export const NATOURS_API = 'https://natours-api-mw9e.onrender.com';
+export const NATOURS_API = 'http://127.0.0.1:3000';
 
 export async function getAllTours() {
-    const response = await fetch(`${NATOURS_API}/api/v1/tours`);
+    const res = await axios({
+        method: 'GET',
+        url: `${NATOURS_API}/api/v1/tours`,
+    });
 
-    if (!response.ok) throw new Error('Could not get data');
+    console.log(res.data);
 
-    const toursData = await response.json();
-
-    return toursData.data;
+    return res.data.data;
 }
 
 export async function getSingleTour(tourSlug) {
-    const response = await fetch(`${NATOURS_API}/api/v1/tours/tour/${tourSlug}`);
+    const res = await axios({
+        method: 'GET',
+        url: `${NATOURS_API}/api/v1/tours/tour/${tourSlug}`,
+    });
 
-    if (!response.ok) throw new Error('Could not get data');
+    console.log(res.data);
 
-    const toursData = await response.json();
-
-    // console.log(toursData);
-
-    return toursData.data;
+    return res.data.data;
 }

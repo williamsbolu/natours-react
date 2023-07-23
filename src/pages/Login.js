@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import LoginForm from '../components/layout/LoginForm';
@@ -14,33 +15,27 @@ const Login = () => {
         setIsLoading(true);
 
         try {
-            const response = await fetch(`${NATOURS_API}/api/v1/users/login`, {
+            const res = await axios({
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(loginData),
-                // credentials: 'include',
+                url: `${NATOURS_API}/api/v1/users/login`,
+                data: loginData,
+                withCredentials: true,
             });
 
-            if (!response.ok) {
-                const data = await response.json();
-                throw new Error(data.message);
-            }
+            console.log(res);
 
-            const userData = await response.json();
-
+            const userData = res.data.data.user;
             console.log(userData);
 
-            authCtx.login(true, userData.data.user); // meaning d user is logged in cuz we dont store the token
+            authCtx.login(true, userData); // meaning d user is logged in cuz we dont store the token
 
-            // notify the user
+            // // notify the user
             authCtx.setNotification({
                 status: 'complete',
-                message: `welcome ${userData.data.user.name.split(' ')[0]}`,
+                message: `welcome ${userData.name.split(' ')[0]}`,
             });
 
-            // redirect to the homepage
+            // // redirect to the homepage
             navigate('/', { replace: true });
         } catch (err) {
             console.log(err);
