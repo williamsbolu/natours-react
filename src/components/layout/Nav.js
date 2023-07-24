@@ -42,7 +42,7 @@ const Header = () => {
                             src={`${NATOURS_API}/img/users/${authCtx.userStatus.userPhoto}`}
                             alt={`img of ${authCtx.userStatus.userName}`}
                         />
-                        <span>user</span>
+                        <span>{authCtx.userStatus.userName.split(' ')[0]}</span>
                     </Link>
                 )}
             </ul>
