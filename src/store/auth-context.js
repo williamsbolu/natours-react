@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import axios from 'axios';
 import { NATOURS_API } from '../lib/api';
+import axios from 'axios';
+axios.defaults.withCredentials = true;
 
 const AuthContext = React.createContext({
     userStatus: {
