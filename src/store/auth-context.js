@@ -52,6 +52,12 @@ export const AuthContextProvider = (props) => {
                 userName: '',
                 userEmail: '',
             });
+
+            // // notify the user
+            setNotification({
+                status: 'complete',
+                message: `logged out user`,
+            });
         } catch (error) {
             setNotification({
                 status: 'error',
@@ -74,7 +80,8 @@ export const AuthContextProvider = (props) => {
 
             console.log(res.data);
 
-            if (res.data) loginHandler(res.data.isLoggedIn, res.data.user);
+            // if the user status was loggedIn
+            if (res.data.isLoggedIn) loginHandler(res.data.isLoggedIn, res.data.user);
         } catch (err) {
             console.log(err);
             return;
