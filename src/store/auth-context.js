@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { NATOURS_API } from '../lib/api';
 import axios from 'axios';
-axios.defaults.withCredentials = true;
+// axios.defaults.withCredentials = true;
 
 const AuthContext = React.createContext({
     userStatus: {
@@ -39,7 +39,7 @@ export const AuthContextProvider = (props) => {
         try {
             const response = await fetch(`${NATOURS_API}/api/v1/users/logout`, {
                 method: 'GET',
-                // credentials: 'include',
+                credentials: 'include',
             });
 
             if (!response.ok) {
