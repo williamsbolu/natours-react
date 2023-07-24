@@ -81,14 +81,14 @@ export const AuthContextProvider = (props) => {
         }
     }, []);
 
-    // useEffect(() => {
-    //     getLoggedStatus();
-    // }, [getLoggedStatus]);
+    useEffect(() => {
+        getLoggedStatus();
+    }, [getLoggedStatus]);
 
     const contextValue = {
         userStatus,
         login: loginHandler,
-        logout: getLoggedStatus,
+        logout: logoutHandler,
         notification,
         setNotification: setNotificationHandler,
     };
