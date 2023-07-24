@@ -19,7 +19,7 @@ const Login = () => {
                 method: 'POST',
                 url: `${NATOURS_API}/api/v1/users/login`,
                 data: loginData,
-                withCredentials: true,
+                // withCredentials: true,
             });
 
             console.log(res);

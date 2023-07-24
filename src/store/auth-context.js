@@ -69,7 +69,7 @@ export const AuthContextProvider = (props) => {
             const res = await axios({
                 method: 'GET',
                 url: `${NATOURS_API}/api/v1/users/getLoggedInStatus`,
-                withCredentials: true,
+                // withCredentials: true,
             });
 
             console.log(res.data);
