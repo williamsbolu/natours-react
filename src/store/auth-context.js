@@ -74,7 +74,7 @@ export const AuthContextProvider = (props) => {
 
             console.log(res.data);
 
-            // if (res.data) loginHandler(res.data.isLoggedIn, res.data.user);
+            if (res.data) loginHandler(res.data.isLoggedIn, res.data.user);
         } catch (err) {
             console.log(err);
             return;
