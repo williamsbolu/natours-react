@@ -8,8 +8,6 @@ export async function getAllTours() {
         url: `${NATOURS_API}/api/v1/tours`,
     });
 
-    console.log(res.data);
-
     return res.data.data;
 }
 
@@ -18,8 +16,6 @@ export async function getSingleTour(tourSlug) {
         method: 'GET',
         url: `${NATOURS_API}/api/v1/tours/tour/${tourSlug}`,
     });
-
-    console.log(res.data);
 
     return res.data.data;
 }

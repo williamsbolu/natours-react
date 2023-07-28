@@ -1,7 +1,9 @@
 import { useRef, useState } from 'react';
 import styles from './LoginForm.module.css';
 
-const SignUpForm = () => {
+import LoginSpinner from '../UI/LoginSpinner';
+
+const SignUpForm = (props) => {
     const nameInputRef = useRef();
     const emailInputRef = useRef();
     const passwordInputRef = useRef();
@@ -45,6 +47,12 @@ const SignUpForm = () => {
         if (!formContentIsValid) return;
 
         // submit the form
+        props.onSignUp({
+            name: enteredName,
+            email: enteredEmail,
+            password: enteredPassword,
+            passwordConfirm: enteredPasswordConfirm,
+        });
     };
 
     // Input styles
@@ -126,7 +134,13 @@ const SignUpForm = () => {
                     )}
                 </div>
                 <div className={styles['form__group']}>
-                    <button className="btn btn--green">Sign Up</button>
+                    <button
+                        className={`${styles['btn']} ${
+                            props.isLoading ? styles['btn--loader'] : ''
+                        }`}
+                    >
+                        Sign Up {props.isLoading && <LoginSpinner />}
+                    </button>
                 </div>
             </form>
         </section>

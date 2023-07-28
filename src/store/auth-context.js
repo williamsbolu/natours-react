@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { NATOURS_API } from '../lib/api';
 import axios from 'axios';
 // axios.defaults.withCredentials = true;
@@ -17,6 +18,7 @@ const AuthContext = React.createContext({
 });
 
 export const AuthContextProvider = (props) => {
+    const navigate = useNavigate();
     const [userStatus, setUserStatus] = useState({
         userIsLoggedIn: false,
         userPhoto: '',
@@ -53,11 +55,13 @@ export const AuthContextProvider = (props) => {
                 userEmail: '',
             });
 
-            // // notify the user
+            // notify the user
             setNotification({
                 status: 'complete',
                 message: `logged out user`,
             });
+
+            navigate('/');
         } catch (error) {
             setNotification({
                 status: 'error',
