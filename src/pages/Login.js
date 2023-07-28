@@ -24,8 +24,8 @@ const Login = () => {
 
             console.log(res);
 
-            const userData = res.data.data.user;
-            console.log(userData);
+            const userData = res.data.user;
+            // console.log(userData);
 
             authCtx.login(true, userData); // meaning d user is logged in cuz we dont store the token
 
