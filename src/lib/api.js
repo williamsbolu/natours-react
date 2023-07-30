@@ -28,7 +28,7 @@ export async function getUserData() {
     if (!response.ok) throw new Error('something went wrong');
 
     const data = await response.json();
-    console.log(data);
+    console.log(data.data);
     console.log('sending...');
-    return data;
+    return data.data;
 }

@@ -12,7 +12,7 @@ const UserSettings = () => {
     const passwordInputRef = useRef();
     const passwordConfirmInputRef = useRef();
 
-    const { sendRequest, status, data: tours, error } = useHttp(getUserData, true);
+    const { sendRequest, status, data: userData, error } = useHttp(getUserData, true);
 
     useEffect(() => {
         sendRequest();
