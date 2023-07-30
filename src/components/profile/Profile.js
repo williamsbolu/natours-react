@@ -1,4 +1,4 @@
-import { useEffect, useContext } from 'react';
+import { useContext } from 'react';
 import { NavLink, Route, Routes } from 'react-router-dom';
 
 import AuthContext from '../../store/auth-context';
