@@ -3,6 +3,7 @@ import useHttp from '../../hooks/use-http';
 
 import styles from './UserSettings.module.css';
 import { NATOURS_API, getUserData } from '../../lib/api';
+import LoginSpinner from '../UI/LoginSpinner';
 
 const UserSettings = () => {
     const nameInputRef = useRef();
@@ -77,6 +78,22 @@ const UserSettings = () => {
         // change the password
         // props.onChangePassword()
     };
+
+    if (status === 'pending') {
+        return (
+            <div className="centered">
+                <LoginSpinner />
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className="centered">
+                <p>{error}</p>
+            </div>
+        );
+    }
 
     return (
         <Fragment>

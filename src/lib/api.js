@@ -30,5 +30,5 @@ export async function getUserData() {
     const userData = await response.json();
     console.log(userData.data.data);
     console.log('sending...');
-    return userData.data;
+    return userData.data.data;
 }
