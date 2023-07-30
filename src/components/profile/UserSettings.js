@@ -1,6 +1,8 @@
-import { Fragment, useState, useRef } from 'react';
+import { Fragment, useState, useRef, useEffect } from 'react';
+import useHttp from '../../hooks/use-http';
 
 import styles from './UserSettings.module.css';
+import { getUserData } from '../../lib/api';
 import user1 from '../../assets/user-1.jpg';
 
 const UserSettings = () => {
@@ -9,6 +11,12 @@ const UserSettings = () => {
     const CurrentPasswordInputRef = useRef();
     const passwordInputRef = useRef();
     const passwordConfirmInputRef = useRef();
+
+    const { sendRequest, status, data: tours, error } = useHttp(getUserData, true);
+
+    useEffect(() => {
+        sendRequest();
+    }, [sendRequest]);
 
     const [updateFormIsValid, setUpdateFormIsValid] = useState({
         enteredNameIsValid: true,

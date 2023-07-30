@@ -10,6 +10,7 @@ const AuthContext = React.createContext({
         userPhoto: '',
         userName: '',
         userEmail: '',
+        userRole: '',
     },
     login: () => {},
     logout: () => {},
@@ -24,6 +25,7 @@ export const AuthContextProvider = (props) => {
         userPhoto: '',
         userName: '',
         userEmail: '',
+        userRole: '',
     });
     const [notification, setNotification] = useState(null);
 
@@ -33,6 +35,7 @@ export const AuthContextProvider = (props) => {
             userPhoto: user.photo,
             userName: user.name,
             userEmail: user.email,
+            userRole: user.role,
         });
     };
 
