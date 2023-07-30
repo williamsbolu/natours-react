@@ -110,8 +110,8 @@ const UserSettings = () => {
                             }`}
                             id="name"
                             type="text"
-                            defaultValue="bolu"
-                            ref={user.name}
+                            defaultValue={user.name}
+                            ref={nameInputRef}
                         />
                         {!updateFormIsValid.enteredNameIsValid && (
                             <p className="text-invalid">
@@ -129,8 +129,8 @@ const UserSettings = () => {
                             }`}
                             id="email"
                             type="email"
-                            defaultValue="williams@"
-                            ref={user.email}
+                            defaultValue={user.email}
+                            ref={emailInputRef}
                         />
                         {!updateFormIsValid.enteredEmailIsValid && (
                             <p className="text-invalid">
