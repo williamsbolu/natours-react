@@ -79,162 +79,162 @@ const UserSettings = () => {
         // props.onChangePassword()
     };
 
-    // if (status === 'pending') {
+    if (status === 'pending') {
+        return (
+            <div className="centered">
+                <LoginSpinnerDark />
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className="centered">
+                <p>Could not connect to the server. Try again later.</p>
+            </div>
+        );
+    }
+
     return (
-        <div className="centered">
-            <LoginSpinnerDark />
-        </div>
+        <Fragment>
+            <div className={styles['user-view__form-container']}>
+                <h2 className="heading-secondary ma-bt-md">Your account settings</h2>
+                <form className="form" onSubmit={updateFormHandler}>
+                    <div className="form__group">
+                        <label className="form__label" htmlFor="name">
+                            Name
+                        </label>
+                        <input
+                            className={`form__input ${
+                                !updateFormIsValid.enteredNameIsValid ? 'invalid' : ''
+                            }`}
+                            id="name"
+                            type="text"
+                            defaultValue="bolu"
+                            ref={user.name}
+                        />
+                        {!updateFormIsValid.enteredNameIsValid && (
+                            <p className="text-invalid">
+                                Your name must be at least 5 characters.
+                            </p>
+                        )}
+                    </div>
+                    <div className="form__group ma-bt-md">
+                        <label className="form__label" htmlFor="email">
+                            Email address
+                        </label>
+                        <input
+                            className={`form__input ${
+                                !updateFormIsValid.enteredEmailIsValid ? 'invalid' : ''
+                            }`}
+                            id="email"
+                            type="email"
+                            defaultValue="williams@"
+                            ref={user.email}
+                        />
+                        {!updateFormIsValid.enteredEmailIsValid && (
+                            <p className="text-invalid">
+                                Please enter a valid email address.
+                            </p>
+                        )}
+                    </div>
+                    <div className="form__group form__photo-upload">
+                        <img
+                            className="form__user-photo"
+                            src={`${NATOURS_API}/img/users/${user.photo}`}
+                            alt={user.photo}
+                        />
+                        <input
+                            className="form__upload"
+                            type="file"
+                            accept="image/*"
+                            id="photo"
+                        />
+                        <label htmlFor="photo">Choose new photo </label>
+                    </div>
+                    <div className="form__group right">
+                        <button className="btn btn--small btn--green">
+                            Save settings
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div className={styles.line}>&nbsp;</div>
+            <div className={styles['user-view__form-container']}>
+                <h2 className="heading-secondary ma-bt-md">Password change</h2>
+                <form className="form" onSubmit={changePasswordHandler}>
+                    <div className="form__group">
+                        <label className="form__label" htmlFor="password-current">
+                            Current password
+                        </label>
+                        <input
+                            className={`form__input ${
+                                !passwordFormIsValid.enteredCurrentPasswordIsValid
+                                    ? 'invalid'
+                                    : ''
+                            }`}
+                            id="password-current"
+                            type="password"
+                            placeholder="••••••••"
+                            ref={CurrentPasswordInputRef}
+                        />
+                        {!passwordFormIsValid.enteredCurrentPasswordIsValid && (
+                            <p className="text-invalid">
+                                Password must be at least 8 characters.
+                            </p>
+                        )}
+                    </div>
+                    <div className="form__group">
+                        <label className="form__label" htmlFor="password">
+                            New password
+                        </label>
+                        <input
+                            className={`form__input ${
+                                !passwordFormIsValid.enteredPasswordIsValid
+                                    ? 'invalid'
+                                    : ''
+                            }`}
+                            id="password"
+                            type="password"
+                            placeholder="••••••••"
+                            ref={passwordInputRef}
+                        />
+                        {!passwordFormIsValid.enteredPasswordIsValid && (
+                            <p className="text-invalid">
+                                Password must be at least 8 characters.
+                            </p>
+                        )}
+                    </div>
+                    <div className="form__group ma-bt-lg">
+                        <label className="form__label" htmlFor="password-confirm">
+                            Confirm password
+                        </label>
+                        <input
+                            className={`form__input ${
+                                !passwordFormIsValid.enteredPasswordConfirmIsValid
+                                    ? 'invalid'
+                                    : ''
+                            }`}
+                            id="password-confirm"
+                            type="password"
+                            placeholder="••••••••"
+                            ref={passwordConfirmInputRef}
+                        />
+                        {!passwordFormIsValid.enteredPasswordConfirmIsValid && (
+                            <p className="text-invalid">
+                                Password must be at least 8 characters.
+                            </p>
+                        )}
+                    </div>
+                    <div className="form__group right">
+                        <button className="btn btn--small btn--green">
+                            Save password
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </Fragment>
     );
-    // }
-
-    // if (error) {
-    //     return (
-    //         <div className="centered">
-    //             <p>{error}</p>
-    //         </div>
-    //     );
-    // }
-
-    // return (
-    //     <Fragment>
-    //         <div className={styles['user-view__form-container']}>
-    //             <h2 className="heading-secondary ma-bt-md">Your account settings</h2>
-    //             <form className="form" onSubmit={updateFormHandler}>
-    //                 <div className="form__group">
-    //                     <label className="form__label" htmlFor="name">
-    //                         Name
-    //                     </label>
-    //                     <input
-    //                         className={`form__input ${
-    //                             !updateFormIsValid.enteredNameIsValid ? 'invalid' : ''
-    //                         }`}
-    //                         id="name"
-    //                         type="text"
-    //                         defaultValue="bolu"
-    //                         ref={user.name}
-    //                     />
-    //                     {!updateFormIsValid.enteredNameIsValid && (
-    //                         <p className="text-invalid">
-    //                             Your name must be at least 5 characters.
-    //                         </p>
-    //                     )}
-    //                 </div>
-    //                 <div className="form__group ma-bt-md">
-    //                     <label className="form__label" htmlFor="email">
-    //                         Email address
-    //                     </label>
-    //                     <input
-    //                         className={`form__input ${
-    //                             !updateFormIsValid.enteredEmailIsValid ? 'invalid' : ''
-    //                         }`}
-    //                         id="email"
-    //                         type="email"
-    //                         defaultValue="williams@"
-    //                         ref={user.email}
-    //                     />
-    //                     {!updateFormIsValid.enteredEmailIsValid && (
-    //                         <p className="text-invalid">
-    //                             Please enter a valid email address.
-    //                         </p>
-    //                     )}
-    //                 </div>
-    //                 <div className="form__group form__photo-upload">
-    //                     <img
-    //                         className="form__user-photo"
-    //                         src={`${NATOURS_API}/img/users/${user.photo}`}
-    //                         alt={user.photo}
-    //                     />
-    //                     <input
-    //                         className="form__upload"
-    //                         type="file"
-    //                         accept="image/*"
-    //                         id="photo"
-    //                     />
-    //                     <label htmlFor="photo">Choose new photo </label>
-    //                 </div>
-    //                 <div className="form__group right">
-    //                     <button className="btn btn--small btn--green">
-    //                         Save settings
-    //                     </button>
-    //                 </div>
-    //             </form>
-    //         </div>
-    //         <div className={styles.line}>&nbsp;</div>
-    //         <div className={styles['user-view__form-container']}>
-    //             <h2 className="heading-secondary ma-bt-md">Password change</h2>
-    //             <form className="form" onSubmit={changePasswordHandler}>
-    //                 <div className="form__group">
-    //                     <label className="form__label" htmlFor="password-current">
-    //                         Current password
-    //                     </label>
-    //                     <input
-    //                         className={`form__input ${
-    //                             !passwordFormIsValid.enteredCurrentPasswordIsValid
-    //                                 ? 'invalid'
-    //                                 : ''
-    //                         }`}
-    //                         id="password-current"
-    //                         type="password"
-    //                         placeholder="••••••••"
-    //                         ref={CurrentPasswordInputRef}
-    //                     />
-    //                     {!passwordFormIsValid.enteredCurrentPasswordIsValid && (
-    //                         <p className="text-invalid">
-    //                             Password must be at least 8 characters.
-    //                         </p>
-    //                     )}
-    //                 </div>
-    //                 <div className="form__group">
-    //                     <label className="form__label" htmlFor="password">
-    //                         New password
-    //                     </label>
-    //                     <input
-    //                         className={`form__input ${
-    //                             !passwordFormIsValid.enteredPasswordIsValid
-    //                                 ? 'invalid'
-    //                                 : ''
-    //                         }`}
-    //                         id="password"
-    //                         type="password"
-    //                         placeholder="••••••••"
-    //                         ref={passwordInputRef}
-    //                     />
-    //                     {!passwordFormIsValid.enteredPasswordIsValid && (
-    //                         <p className="text-invalid">
-    //                             Password must be at least 8 characters.
-    //                         </p>
-    //                     )}
-    //                 </div>
-    //                 <div className="form__group ma-bt-lg">
-    //                     <label className="form__label" htmlFor="password-confirm">
-    //                         Confirm password
-    //                     </label>
-    //                     <input
-    //                         className={`form__input ${
-    //                             !passwordFormIsValid.enteredPasswordConfirmIsValid
-    //                                 ? 'invalid'
-    //                                 : ''
-    //                         }`}
-    //                         id="password-confirm"
-    //                         type="password"
-    //                         placeholder="••••••••"
-    //                         ref={passwordConfirmInputRef}
-    //                     />
-    //                     {!passwordFormIsValid.enteredPasswordConfirmIsValid && (
-    //                         <p className="text-invalid">
-    //                             Password must be at least 8 characters.
-    //                         </p>
-    //                     )}
-    //                 </div>
-    //                 <div className="form__group right">
-    //                     <button className="btn btn--small btn--green">
-    //                         Save password
-    //                     </button>
-    //                 </div>
-    //             </form>
-    //         </div>
-    //     </Fragment>
-    // );
 };
 
 export default UserSettings;
