@@ -1,4 +1,4 @@
-import styles from './LoginSpinner.module.css';
+import styles from './LoginSpinnerDark.module.css';
 
 const LoginSpinner = () => {
     return (
