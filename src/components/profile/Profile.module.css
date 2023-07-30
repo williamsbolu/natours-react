@@ -1,0 +1,91 @@
+.user-view {
+    background-color: #fff;
+    margin: 8rem 2rem;
+    min-height: 100vh;
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: 0 2.5rem 8rem 2rem rgba(0, 0, 0, 0.07);
+    display: flex;
+}
+
+.user-view__menu {
+    flex: 32rem 0 0;
+    background-image: -webkit-gradient(linear,
+            left top,
+            right bottom,
+            from(#7dd56f),
+            to(#28b487));
+    background-image: linear-gradient(to right bottom, #7dd56f, #28b487);
+    padding: 4rem 0;
+}
+
+.user-view__content {
+    flex: 1;
+    padding: 7rem 0;
+}
+
+.user-nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.side-nav--active {
+    border-left: 4px solid #fff !important;
+    transition: all 0.3s;
+}
+
+.side-nav span {
+    transition: all 0.3s;
+}
+
+.side-nav a:link,
+.side-nav a:visited {
+    display: inline-block;
+    margin: .8rem 0;
+    border-left: 0px solid #fff;
+    padding: 1rem 4rem;
+    color: #fff;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-weight: 300;
+    text-decoration: none;
+    transition: all 0.5;
+}
+
+.side-nav a span {
+    display: flex;
+    align-items: center;
+}
+
+
+.side-nav a:hover,
+.side-nav a:active {
+    transition: border-left 0.3s;
+    border-left: 4px solid #fff;
+}
+
+.side-nav a:hover span,
+.side-nav a:active span {
+    transform: translateX(3px);
+    transition: transform 0.3s;
+}
+
+.side-nav svg {
+    height: 1.9rem;
+    width: 1.9rem;
+    fill: #f7f7f7;
+    margin-right: 2rem;
+}
+
+.admin-nav {
+    margin-top: 5.5rem;
+}
+
+.admin-nav__heading {
+    margin: 0 5rem 1.5rem 4rem;
+    padding-bottom: 3px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    color: #f2f2f2;
+    border-bottom: 1px solid currentColor;
+}

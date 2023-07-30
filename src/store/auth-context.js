@@ -34,7 +34,6 @@ export const AuthContextProvider = (props) => {
             userName: user.name,
             userEmail: user.email,
         });
-        // setUser()
     };
 
     const logoutHandler = async () => {
@@ -79,7 +78,7 @@ export const AuthContextProvider = (props) => {
             const res = await axios({
                 method: 'GET',
                 url: `${NATOURS_API}/api/v1/users/getLoggedInStatus`,
-                withCredentials: true,
+                // withCredentials: true,
             });
 
             console.log(res.data);

@@ -45,6 +45,10 @@ body {
   margin-bottom: 3.5rem !important;
 }
 
+.right {
+  text-align: right !important;
+}
+
 /* ---------------HEADINGS TERTIARY  ------------------ */
 .heading-primary {
   font-size: 5rem;
@@ -179,6 +183,11 @@ body {
   background-color: #55c57a;
 }
 
+.btn--small {
+  font-size: 1.4rem;
+  padding: 1.25rem 3rem;
+}
+
 /* ------------map ------- */
 .section-map {
   position: relative;
@@ -212,6 +221,101 @@ body {
   font-size: 1.4rem;
   -webkit-box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.15) !important;
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.15) !important;
+}
+
+/* -------------form --------------- */
+.form__input {
+  display: block;
+  font-family: inherit;
+  font-size: 1.5rem;
+  color: inherit;
+  padding: 1.25rem 1.75rem;
+  border: none;
+  width: 100%;
+  background-color: #fff;
+  background-color: #f2f2f2;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  border-radius: 4px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  /* Pseudo element (a visible thing that isn't really in the DOM).
+      Also needs -ms- */
+}
+
+.invalid {
+  border: 1px solid #eb4d4b;
+}
+
+.form__input:focus {
+  outline: none;
+}
+
+.form__input::-webkit-input-placeholder {
+  color: #bbb;
+}
+
+.form__group:not(:last-child) {
+  margin-bottom: 2.5rem;
+}
+
+.form__label {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.text-invalid {
+  color: #eb4d4b;
+  font-size: 1.6rem;
+  font-weight: 400;
+  padding-top: .8rem;
+}
+
+.form__photo-upload {
+  display: flex;
+  align-items: center;
+  font-size: 1.6rem;
+}
+
+.form__user-photo {
+  height: 7.5rem;
+  width: 7.5rem;
+  border-radius: 50%;
+  margin-right: 2rem;
+}
+
+.form__upload {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.form__upload:focus+label {
+  outline: 3px solid #55c57a;
+  outline-offset: 3px;
+}
+
+.form__upload+label {
+  color: #55c57a;
+  display: inline-block;
+  text-decoration: none;
+  border-bottom: 1px solid #55c57a;
+  padding: 3px;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.form__upload+label:hover {
+  background-color: #55c57a;
+  color: #fff;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
 }
 
 @media only screen and (max-width: 1000px) {

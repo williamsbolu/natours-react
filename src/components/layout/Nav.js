@@ -37,7 +37,7 @@ const Header = () => {
                     </button>
                 )}
                 {authCtx.userStatus.userIsLoggedIn && (
-                    <Link className={styles['user-link']}>
+                    <Link to="/my-account" className={styles['user-link']}>
                         <img
                             src={`${NATOURS_API}/img/users/${authCtx.userStatus.userPhoto}`}
                             alt={`img of ${authCtx.userStatus.userName}`}

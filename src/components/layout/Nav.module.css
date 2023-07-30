@@ -38,7 +38,8 @@
     transform: translateY(-2px) !important;
 }
 
-.nav .btn:hover {
+.nav .btn:hover,
+.user-link:hover {
     text-shadow: 0 0.7rem 1rem black;
     transform: translateY(-2px) !important;
 }

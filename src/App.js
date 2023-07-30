@@ -9,6 +9,7 @@ const Home = React.lazy(() => import('./pages/Home'));
 const TourDetail = React.lazy(() => import('./pages/TourDetail'));
 const Login = React.lazy(() => import('./pages/Login'));
 const SignUp = React.lazy(() => import('./pages/SignUp'));
+const UserProfile = React.lazy(() => import('./pages/UserProfile'));
 
 function App() {
     return (
@@ -26,6 +27,7 @@ function App() {
                         <Route path="/tour/:slug" element={<TourDetail />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/sign-up" element={<SignUp />} />
+                        <Route path="/my-account/*" element={<UserProfile />} />
                     </Routes>
                 </Suspense>
             </Layout>
