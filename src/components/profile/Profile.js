@@ -11,6 +11,7 @@ const Profile = (props) => {
     const { sendRequest, status, data: userData, error } = useHttp(getUserData, true);
 
     useEffect(() => {
+        console.log('profile running');
         sendRequest();
     }, [sendRequest]);
 
