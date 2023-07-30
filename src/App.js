@@ -31,7 +31,7 @@ function App() {
                         <Route path="/login" element={<Login />} />
                         <Route path="/sign-up" element={<SignUp />} />
                         {!authCtx.userStatus.userIsLoggedIn && (
-                            <Route path="/my-account/*" element={<Login />} />
+                            <Route path="/my-account" element={<Login />} />
                         )}
                         {authCtx.userStatus.userIsLoggedIn && (
                             <Route path="/my-account/*" element={<UserProfile />} />

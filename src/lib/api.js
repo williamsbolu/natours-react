@@ -25,10 +25,8 @@ export async function getUserData() {
         credentials: 'include',
     });
 
-    if (!response.ok) throw new Error('something went wrong');
+    if (!response.ok) throw new Error('something went wrong. Try again later.');
 
     const userData = await response.json();
-    console.log(userData.data.data);
-    console.log('sending...');
     return userData.data.data;
 }

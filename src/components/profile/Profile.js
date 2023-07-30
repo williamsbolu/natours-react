@@ -15,7 +15,7 @@ const Profile = (props) => {
                 <div className={styles['side-nav']}>
                     <div className={styles['user-nav']}>
                         <NavLink
-                            to="/my-account"
+                            to=""
                             className={({ isActive }) =>
                                 isActive ? styles['side-nav--active'] : ''
                             }
@@ -29,7 +29,7 @@ const Profile = (props) => {
                         </NavLink>
 
                         <NavLink
-                            to="/my-account/tours"
+                            to="tours"
                             className={({ isActive }) =>
                                 isActive ? styles['side-nav--active'] : ''
                             }
@@ -43,7 +43,7 @@ const Profile = (props) => {
                         </NavLink>
 
                         <NavLink
-                            to="/my-account/reviews"
+                            to="reviews"
                             className={({ isActive }) =>
                                 isActive ? styles['side-nav--active'] : ''
                             }
@@ -57,7 +57,7 @@ const Profile = (props) => {
                         </NavLink>
 
                         <NavLink
-                            to="/my-account/billing"
+                            to="billing"
                             className={({ isActive }) =>
                                 isActive ? styles['side-nav--active'] : ''
                             }
@@ -75,7 +75,7 @@ const Profile = (props) => {
                             <h5 className={styles['admin-nav__heading']}>Admin</h5>
                             <div className={styles['side-nav']}>
                                 <NavLink
-                                    to="/my-account/manage-tours"
+                                    to="manage-tours"
                                     className={({ isActive }) =>
                                         isActive ? styles['side-nav--active'] : ''
                                     }
@@ -89,7 +89,7 @@ const Profile = (props) => {
                                 </NavLink>
 
                                 <NavLink
-                                    to="/my-account/manage-users"
+                                    to="manage-users"
                                     className={({ isActive }) =>
                                         isActive ? styles['side-nav--active'] : ''
                                     }
@@ -103,7 +103,7 @@ const Profile = (props) => {
                                 </NavLink>
 
                                 <NavLink
-                                    to="/my-account/manage-reviews"
+                                    to="manage-reviews"
                                     className={({ isActive }) =>
                                         isActive ? styles['side-nav--active'] : ''
                                     }
@@ -117,7 +117,7 @@ const Profile = (props) => {
                                 </NavLink>
 
                                 <NavLink
-                                    to="/my-account/manage-bookings"
+                                    to="manage-bookings"
                                     className={({ isActive }) =>
                                         isActive ? styles['side-nav--active'] : ''
                                     }
