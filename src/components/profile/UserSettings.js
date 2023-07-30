@@ -2,8 +2,7 @@ import { Fragment, useState, useRef, useEffect } from 'react';
 import useHttp from '../../hooks/use-http';
 
 import styles from './UserSettings.module.css';
-import { getUserData } from '../../lib/api';
-import user1 from '../../assets/user-1.jpg';
+import { NATOURS_API, getUserData } from '../../lib/api';
 
 const UserSettings = () => {
     const nameInputRef = useRef();
@@ -12,7 +11,7 @@ const UserSettings = () => {
     const passwordInputRef = useRef();
     const passwordConfirmInputRef = useRef();
 
-    const { sendRequest, status, data: userData, error } = useHttp(getUserData, true);
+    const { sendRequest, status, data: user, error } = useHttp(getUserData, true);
 
     useEffect(() => {
         sendRequest();
@@ -95,7 +94,7 @@ const UserSettings = () => {
                             id="name"
                             type="text"
                             defaultValue="bolu"
-                            ref={nameInputRef}
+                            ref={user.name}
                         />
                         {!updateFormIsValid.enteredNameIsValid && (
                             <p className="text-invalid">
@@ -114,7 +113,7 @@ const UserSettings = () => {
                             id="email"
                             type="email"
                             defaultValue="williams@"
-                            ref={emailInputRef}
+                            ref={user.email}
                         />
                         {!updateFormIsValid.enteredEmailIsValid && (
                             <p className="text-invalid">
@@ -123,7 +122,11 @@ const UserSettings = () => {
                         )}
                     </div>
                     <div className="form__group form__photo-upload">
-                        <img className="form__user-photo" src={user1} alt="user" />
+                        <img
+                            className="form__user-photo"
+                            src={`${NATOURS_API}/img/users/${user.photo}`}
+                            alt={user.photo}
+                        />
                         <input
                             className="form__upload"
                             type="file"
