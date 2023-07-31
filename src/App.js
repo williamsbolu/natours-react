@@ -1,5 +1,5 @@
 import React, { Suspense, useContext } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 
 import AuthContext from './store/auth-context';
 import ScrollToTop from './ScrollToTop';
@@ -28,8 +28,18 @@ function App() {
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/tour/:slug" element={<TourDetail />} />
-                        <Route path="/login" element={<Login />} />
-                        <Route path="/sign-up" element={<SignUp />} />
+                        {!authCtx.userStatus.userIsLoggedIn && (
+                            <Route path="/login" element={<Login />} />
+                        )}
+                        {authCtx.userStatus.userIsLoggedIn && (
+                            <Route path="/login" element={<Navigate to="/" />} />
+                        )}
+                        {!authCtx.userStatus.userIsLoggedIn && (
+                            <Route path="/sign-up" element={<SignUp />} />
+                        )}
+                        {authCtx.userStatus.userIsLoggedIn && (
+                            <Route path="/sign-up" element={<Navigate to="/" />} />
+                        )}
                         {!authCtx.userStatus.userIsLoggedIn && (
                             <Route path="/my-account" element={<Login />} />
                         )}

@@ -5,7 +5,7 @@ import styles from './UserSettings.module.css';
 import { NATOURS_API, getUserData } from '../../lib/api';
 import LoginSpinnerDark from '../UI/LoginSpinnerDark';
 
-const UserSettings = () => {
+const UserSettings = (props) => {
     const nameInputRef = useRef();
     const emailInputRef = useRef();
     const CurrentPasswordInputRef = useRef();
@@ -47,7 +47,7 @@ const UserSettings = () => {
         if (!enteredNameIsValid && !enteredEmailIsValid) return;
 
         // update the user
-        // props.onUpdateUser()
+        // props.onUpdateUser();
     };
 
     const changePasswordHandler = (e) => {
@@ -76,7 +76,11 @@ const UserSettings = () => {
         if (!formContentIsValid) return;
 
         // change the password
-        // props.onChangePassword()
+        props.onChangePassword({
+            passwordCurrent: enteredCurrentPassword,
+            password: enteredPassword,
+            passwordConfirm: enteredPasswordConfirm,
+        });
     };
 
     if (status === 'pending') {
@@ -154,7 +158,7 @@ const UserSettings = () => {
                     </div>
                     <div className="form__group right">
                         <button className="btn btn--small btn--green">
-                            Save settings
+                            {!props.updateIsLoading ? 'Save settings' : 'Please wait...'}
                         </button>
                     </div>
                 </form>
