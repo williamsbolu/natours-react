@@ -9,6 +9,7 @@ import { NATOURS_API } from '../../lib/api';
 
 const Profile = (props) => {
     const [updateIsLoading, setUpdateIsLoading] = useState(false);
+    const [passwordChangeIsLoading, setPasswordChangeIsLoading] = useState(false);
     const authCtx = useContext(AuthContext);
 
     const updateUserHandler = async () => {
@@ -16,7 +17,7 @@ const Profile = (props) => {
     };
 
     const changePasswordHandler = async (passwordData) => {
-        setUpdateIsLoading(true);
+        setPasswordChangeIsLoading(true);
         try {
             const response = await fetch(`${NATOURS_API}/api/v1/users/updateMyPassword`, {
                 method: 'PATCH',
@@ -41,7 +42,7 @@ const Profile = (props) => {
                 message: err.message,
             });
         }
-        setUpdateIsLoading(false);
+        setPasswordChangeIsLoading(false);
     };
 
     return (
@@ -178,6 +179,7 @@ const Profile = (props) => {
                                 onChangePassword={changePasswordHandler}
                                 onUpdateUser={updateUserHandler}
                                 updateIsLoading={updateIsLoading}
+                                passwordChangeIsLoading={passwordChangeIsLoading}
                             />
                         }
                     />

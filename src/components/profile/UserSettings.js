@@ -232,7 +232,9 @@ const UserSettings = (props) => {
                     </div>
                     <div className="form__group right">
                         <button className="btn btn--small btn--green">
-                            Save password
+                            {!props.passwordChangeIsLoading
+                                ? 'Save password'
+                                : 'Updating...'}
                         </button>
                     </div>
                 </form>
