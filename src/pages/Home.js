@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 import useHttp from '../hooks/use-http';
 import TourList from '../components/tour/TourList';
-import LoadingSpinner from '../components/UI/LoadingSpinner';
+import LoadingSpinner from '../components/UI/LoginSpinnerDark';
 import { getAllTours } from '../lib/api';
 
 const Home = () => {

@@ -4,7 +4,7 @@ import { Route, Routes, Navigate } from 'react-router-dom';
 import AuthContext from './store/auth-context';
 import ScrollToTop from './ScrollToTop';
 import Layout from './components/layout/Layout';
-import LoadingSpinner from './components/UI/LoadingSpinner';
+import LoadingSpinner from './components/UI/LoginSpinnerDark';
 
 const Home = React.lazy(() => import('./pages/Home'));
 const TourDetail = React.lazy(() => import('./pages/TourDetail'));

@@ -38,7 +38,7 @@ const Layout = (props) => {
                 <Nav />
             </header>
             <main>{props.children}</main>
-            {/* <Footer /> */}
+            <Footer />
         </Fragment>
     );
 };

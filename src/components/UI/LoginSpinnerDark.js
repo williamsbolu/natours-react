@@ -1,7 +1,7 @@
 import styles from './LoginSpinnerDark.module.css';
 
-const LoginSpinner = () => {
+const LoginSpinnerDark = () => {
     return <div className={`${styles.sp} ${styles['sp-circle']}`}></div>;
 };
 
-export default LoginSpinner;
+export default LoginSpinnerDark;

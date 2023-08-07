@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-import LoadingSpinner from '../components/UI/LoadingSpinner';
+import LoadingSpinner from '../components/UI/LoginSpinnerDark';
 import TourView from '../components/tour/TourView';
 import useHttp from '../hooks/use-http';
 import { getSingleTour } from '../lib/api';
