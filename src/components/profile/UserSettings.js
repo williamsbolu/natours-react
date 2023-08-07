@@ -1,22 +1,57 @@
-import { Fragment, useState, useRef, useEffect } from 'react';
-import useHttp from '../../hooks/use-http';
+import { Fragment, useState, useRef, useEffect, useCallback, useContext } from 'react';
+import AuthContext from '../../store/auth-context';
+// import useHttp from '../../hooks/use-http';
 
 import styles from './UserSettings.module.css';
-import { NATOURS_API, getUserData } from '../../lib/api';
+import axios from 'axios';
+import { NATOURS_API } from '../../lib/api';
 import LoginSpinnerDark from '../UI/LoginSpinnerDark';
 
 const UserSettings = (props) => {
+    const authCtx = useContext(AuthContext);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [user, setUser] = useState(null);
+
     const nameInputRef = useRef();
     const emailInputRef = useRef();
+    const photoInputRef = useRef();
     const CurrentPasswordInputRef = useRef();
     const passwordInputRef = useRef();
     const passwordConfirmInputRef = useRef();
 
-    const { sendRequest, status, data: user, error } = useHttp(getUserData, true);
+    // For local storage auth functionality
+    const getUserData = useCallback(async () => {
+        try {
+            const res = await axios.get(`${NATOURS_API}/api/v1/users/me`, {
+                headers: {
+                    Authorization: `Bearer ${authCtx.token}`,
+                },
+            });
+
+            console.log(res);
+            setUser(res.data.data.data);
+        } catch (err) {
+            console.log(err);
+            // if the request was rejected by d server, the we output the server response message
+            if (err.response.status === 401) {
+                setError(err.response.data.message);
+            } else {
+                setError('Could not connect to the server. Try again later.');
+            }
+        }
+        setIsLoading(false);
+    }, [authCtx.token]);
 
     useEffect(() => {
-        sendRequest();
-    }, [sendRequest]);
+        getUserData();
+    }, [getUserData]);
+
+    // const { sendRequest, status, data: user, error } = useHttp(getUserData, true);
+
+    // useEffect(() => {
+    //     sendRequest();
+    // }, [sendRequest]);
 
     const [updateFormIsValid, setUpdateFormIsValid] = useState({
         enteredNameIsValid: true,
@@ -34,6 +69,7 @@ const UserSettings = (props) => {
 
         const enteredName = nameInputRef.current.value;
         const enteredEmail = emailInputRef.current.value;
+        const enteredPhotoFile = photoInputRef.current.files[0];
 
         // confirm validity
         const enteredNameIsValid = enteredName.length >= 5;
@@ -46,8 +82,16 @@ const UserSettings = (props) => {
 
         if (!enteredNameIsValid && !enteredEmailIsValid) return;
 
+        const form = new FormData();
+        form.append('name', enteredName);
+        form.append('email', enteredEmail);
+        form.append('photo', enteredPhotoFile);
+
+        // prevent sending multiple request
+        if (props.updateIsLoading) return;
+
         // update the user
-        // props.onUpdateUser();
+        props.onUpdateUser(form);
     };
 
     const changePasswordHandler = (e) => {
@@ -75,6 +119,9 @@ const UserSettings = (props) => {
 
         if (!formContentIsValid) return;
 
+        // prevent sending multiple request
+        if (props.passwordChangeIsLoading) return;
+
         // change the password
         props.onChangePassword({
             passwordCurrent: enteredCurrentPassword,
@@ -83,7 +130,8 @@ const UserSettings = (props) => {
         });
     };
 
-    if (status === 'pending') {
+    // if (status === 'pending') {// for httpOnly
+    if (isLoading) {
         return (
             <div className="centered">
                 <LoginSpinnerDark />
@@ -94,7 +142,7 @@ const UserSettings = (props) => {
     if (error) {
         return (
             <div className="centered">
-                <p>Could not connect to the server. Try again later.</p>
+                <p>{error}</p>
             </div>
         );
     }
@@ -153,6 +201,7 @@ const UserSettings = (props) => {
                             type="file"
                             accept="image/*"
                             id="photo"
+                            ref={photoInputRef}
                         />
                         <label htmlFor="photo">Choose new photo </label>
                     </div>

@@ -15,19 +15,22 @@ const SignUp = () => {
         setIsLoading(true);
 
         try {
+            // const res = await axios({
+            //     method: 'POST',
+            //     url: `${NATOURS_API}/api/v1/users/signup`,
+            //     data: userSignUpData,
+            //     withCredentials: true,
+            // });
             const res = await axios({
                 method: 'POST',
                 url: `${NATOURS_API}/api/v1/users/signup`,
                 data: userSignUpData,
-                withCredentials: true,
             });
 
-            console.log(res);
-
             const userData = res.data.user;
-            // console.log(userData);
 
-            authCtx.login(true, userData); // meaning d user is logged in cuz we dont store the token
+            // authCtx.login(true, userData); // meaning d user is logged in cuz we dont store the token
+            authCtx.login(res.data.token, userData); // for local
 
             // notify the user
             authCtx.setNotification({
@@ -39,10 +42,21 @@ const SignUp = () => {
             navigate('/');
         } catch (err) {
             console.log(err);
-            authCtx.setNotification({
-                status: 'error',
-                message: err.message,
-            });
+
+            if (
+                err.response.status === 400 &&
+                err.response.data.message.startsWith('Duplicate field value')
+            ) {
+                authCtx.setNotification({
+                    status: 'error',
+                    message: 'There is already an account with this email address.',
+                });
+            } else {
+                authCtx.setNotification({
+                    status: 'error',
+                    message: err.response.data.message,
+                });
+            }
         }
 
         setIsLoading(false);

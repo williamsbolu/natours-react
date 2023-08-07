@@ -335,9 +335,17 @@ body {
   .heading-primary span {
     padding: .5rem 1rem;
   }
+
+  .heading-tertirary {
+    width: 60%;
+  }
 }
 
 @media only screen and (max-width: 800px) {
+
+  .heading-tertirary {
+    width: 70%;
+  }
 
   .ma-bt-md {
     margin-bottom: 2rem !important;
@@ -345,5 +353,25 @@ body {
 
   .ma-bt-lg {
     margin-bottom: 2.5rem !important;
+  }
+}
+
+
+@media only screen and (max-width: 600px) {
+  .heading-tertirary {
+    width: 40%;
+    font-size: 2.3rem;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .heading-tertirary {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .heading-tertirary {
+    width: 60%;
   }
 }

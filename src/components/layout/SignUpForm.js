@@ -46,6 +46,9 @@ const SignUpForm = (props) => {
         // if the content or one of the content is invalid
         if (!formContentIsValid) return;
 
+        // prevent sending multiple request
+        if (props.isLoading) return;
+
         // submit the form
         props.onSignUp({
             name: enteredName,

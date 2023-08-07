@@ -11,38 +11,38 @@ const Header = () => {
 
     return (
         <nav className={styles.nav}>
-            <li>
-                <Link to="/">All tours</Link>
-            </li>
+            <Link to="/" className={styles.navlink}>
+                All tours
+            </Link>
+
             <div className={styles['header-logo']}>
                 <img src={logoWhite} alt="Natours-logo white" />
             </div>
+
             <ul className={styles['nav--users']}>
-                {!authCtx.userStatus.userIsLoggedIn && (
-                    <li>
-                        <Link to="/login">Log in</Link>
-                    </li>
+                {!authCtx.isLoggedIn && (
+                    <Link to="/login" className={styles.navlink}>
+                        Log in
+                    </Link>
                 )}
-                {!authCtx.userStatus.userIsLoggedIn && (
-                    <li>
-                        <Link to="/sign-up" className={styles.cta}>
-                            Sign up
-                        </Link>
-                    </li>
+                {!authCtx.isLoggedIn && (
+                    <Link to="/sign-up" className={styles.cta}>
+                        Sign up
+                    </Link>
                 )}
 
-                {authCtx.userStatus.userIsLoggedIn && (
-                    <button className={styles.btn} onClick={authCtx.logout}>
+                {authCtx.isLoggedIn && (
+                    <button className={styles.navlink} onClick={authCtx.logout}>
                         Logout
                     </button>
                 )}
-                {authCtx.userStatus.userIsLoggedIn && (
+                {authCtx.isLoggedIn && (
                     <Link to="/my-account" className={styles['user-link']}>
                         <img
-                            src={`${NATOURS_API}/img/users/${authCtx.userStatus.userPhoto}`}
-                            alt={`img of ${authCtx.userStatus.userName}`}
+                            src={`${NATOURS_API}/img/users/${authCtx.userPhoto}`}
+                            alt="user"
                         />
-                        <span>{authCtx.userStatus.userName.split(' ')[0]}</span>
+                        <span>{authCtx.userName.split(' ')[0]}</span>
                     </Link>
                 )}
             </ul>
@@ -51,3 +51,31 @@ const Header = () => {
 };
 
 export default Header;
+
+// {!authCtx.userStatus.userIsLoggedIn && (
+//     <li>
+//         <Link to="/login">Log in</Link>
+//     </li>
+// )}
+// {!authCtx.userStatus.userIsLoggedIn && (
+//     <li>
+//         <Link to="/sign-up" className={styles.cta}>
+//             Sign up
+//         </Link>
+//     </li>
+// )}
+
+// {authCtx.userStatus.userIsLoggedIn && (
+//     <button className={styles.btn} onClick={authCtx.logout}>
+//         Logout
+//     </button>
+// )}
+// {authCtx.userStatus.userIsLoggedIn && (
+//     <Link to="/my-account" className={styles['user-link']}>
+//         <img
+//             src={`${NATOURS_API}/img/users/${authCtx.userStatus.userPhoto}`}
+//             alt={`img of ${authCtx.userStatus.userName}`}
+//         />
+//         <span>{authCtx.userStatus.userName.split(' ')[0]}</span>
+//     </Link>
+// )}

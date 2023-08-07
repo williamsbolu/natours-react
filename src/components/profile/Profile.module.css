@@ -1,6 +1,7 @@
 .user-view {
     background-color: #fff;
-    margin: 8rem 2rem;
+    margin: 5rem auto;
+    max-width: 123rem;
     min-height: 100vh;
     border-radius: 3px;
     overflow: hidden;
@@ -21,7 +22,7 @@
 
 .user-view__content {
     flex: 1;
-    padding: 7rem 0;
+    padding: 5rem 0;
 }
 
 .user-nav {

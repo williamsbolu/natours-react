@@ -1,36 +1,65 @@
 import { useContext, useState } from 'react';
 import { NavLink, Route, Routes } from 'react-router-dom';
-
 import AuthContext from '../../store/auth-context';
+
 import UserSettings from './UserSettings';
+import Bookings from './Bookings';
 import styles from './Profile.module.css';
+import axios from 'axios';
 import icons from '../../assets/icons.svg';
 import { NATOURS_API } from '../../lib/api';
 
-const Profile = (props) => {
+const Profile = () => {
     const [updateIsLoading, setUpdateIsLoading] = useState(false);
     const [passwordChangeIsLoading, setPasswordChangeIsLoading] = useState(false);
     const authCtx = useContext(AuthContext);
 
-    const updateUserHandler = async () => {
-        return;
+    const updateUserHandler = async (data) => {
+        setUpdateIsLoading(true);
+        try {
+            const res = await axios({
+                method: 'PATCH',
+                url: `${NATOURS_API}/api/v1/users/updateMe`,
+                data,
+                headers: {
+                    Authorization: `Bearer ${authCtx.token}`,
+                },
+            });
+
+            authCtx.updateUserDetails(res.data.data.user);
+
+            authCtx.setNotification({
+                status: 'complete',
+                message: `User data Updated!`,
+            });
+        } catch (err) {
+            authCtx.setNotification({
+                status: 'error',
+                message: err.response.data.message,
+            });
+        }
+        setUpdateIsLoading(false);
     };
 
     const changePasswordHandler = async (passwordData) => {
         setPasswordChangeIsLoading(true);
         try {
-            const response = await fetch(`${NATOURS_API}/api/v1/users/updateMyPassword`, {
+            // const response = await fetch(`${NATOURS_API}/api/v1/users/updateMyPassword`, {
+            //     method: 'PATCH',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //     },
+            //     body: JSON.stringify(passwordData),
+            //     credentials: 'include',
+            // });
+            await axios({
                 method: 'PATCH',
+                url: `${NATOURS_API}/api/v1/users/updateMyPassword`,
+                data: passwordData,
                 headers: {
-                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${authCtx.token}`,
                 },
-                body: JSON.stringify(passwordData),
-                credentials: 'include',
             });
-
-            if (!response.ok) {
-                throw new Error('Could not update user password!');
-            }
 
             authCtx.setNotification({
                 status: 'complete',
@@ -39,7 +68,7 @@ const Profile = (props) => {
         } catch (err) {
             authCtx.setNotification({
                 status: 'error',
-                message: err.message,
+                message: err.response.data.message,
             });
         }
         setPasswordChangeIsLoading(false);
@@ -65,7 +94,7 @@ const Profile = (props) => {
                         </NavLink>
 
                         <NavLink
-                            to="tours"
+                            to="bookings"
                             className={({ isActive }) =>
                                 isActive ? styles['side-nav--active'] : ''
                             }
@@ -106,7 +135,7 @@ const Profile = (props) => {
                             </span>
                         </NavLink>
                     </div>
-                    {authCtx.userStatus.userRole === 'admin' && (
+                    {authCtx.userRole === 'admin' && (
                         <div className={styles['admin-nav']}>
                             <h5 className={styles['admin-nav__heading']}>Admin</h5>
                             <div className={styles['side-nav']}>
@@ -183,6 +212,7 @@ const Profile = (props) => {
                             />
                         }
                     />
+                    <Route path="/bookings" element={<Bookings />} />
                 </Routes>
             </div>
         </section>

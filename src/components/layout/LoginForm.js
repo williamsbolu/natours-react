@@ -26,6 +26,9 @@ const LoginForm = (props) => {
             enteredPasswordIsValid,
         });
 
+        // prevent sending multiple request
+        if (props.isLoading) return;
+
         // if all the input fields are valid, we send d request to login the user
         if (enteredEmailIsValid && enteredPasswordIsValid) {
             props.onLogin({

@@ -1,70 +1,45 @@
 .nav {
-    max-width: 120rem;
+    max-width: 122rem;
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 100%;
-    /* padding: 0 6rem; */
+    padding: 0 2rem;
 }
 
-.nav .btn {
-    border: none;
-    margin-right: 3rem;
+.nav .header-logo img {
+    height: 3.5rem;
 }
 
-.nav a,
-.nav .btn {
+.navlink,
+.cta {
+    display: inline-block;
     background-color: transparent;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     color: var(--text-heading);
     text-transform: uppercase;
-    transition: all 0.2s;
     font-weight: 400;
+    border: none;
+    transition: all 0.3s;
+
 }
 
-.nav .btn:focus {
-    outline: none;
-}
-
-.nav li,
-.nav .btn {
-    transition: all 0.2s;
-    list-style: none;
-}
-
-.nav li:hover:not(:last-child) {
-    text-shadow: 0 0.7rem 1rem black;
-    transform: translateY(-2px) !important;
-}
-
-.nav .btn:hover,
+.navlink:hover,
 .user-link:hover {
     text-shadow: 0 0.7rem 1rem black;
-    transform: translateY(-2px) !important;
+    transform: translateY(-2px);
 }
 
-.nav li:not(:last-child) {
+.navlink:active,
+.navlink:focus,
+.user-link:active {
+    transform: translateY(-1px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.navlink:not(:last-child) {
     margin-right: 2.5rem;
-}
-
-.cta {
-    border: 1px solid var(--text-heading);
-    padding: 1rem 3rem;
-    border-radius: 10rem;
-    -webkit-transition: all 0.3s;
-    transition: all 0.3s;
-}
-
-.cta:hover {
-    text-shadow: none !important;
-    background-color: var(--text-heading);
-    color: #777;
-    border-color: var(--text-heading);
-}
-
-.nav img {
-    height: 3.5rem;
 }
 
 .nav--users {
@@ -75,13 +50,36 @@
 
 .nav--users img {
     border-radius: 100px;
-    height: 4rem;
+    height: 4.5rem;
     margin-right: 1.2rem;
+}
+
+.cta {
+    border: 1px solid var(--text-heading) !important;
+    padding: .7rem 2.7rem;
+    border-radius: 10rem;
+    transition: all 0.3s;
+    font-size: 1.4rem;
+}
+
+.cta:hover {
+    text-shadow: none !important;
+    background-color: var(--text-heading);
+    color: #777;
+    border-color: var(--text-heading);
 }
 
 .user-link {
     display: flex;
     align-items: center;
+    transition: all 0.3s;
+}
+
+.user-link span {
+    color: var(--text-heading);
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-weight: 400;
 }
 
 @media only screen and (max-width: 1200px) {

@@ -28,22 +28,22 @@ function App() {
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/tour/:slug" element={<TourDetail />} />
-                        {!authCtx.userStatus.userIsLoggedIn && (
+                        {!authCtx.isLoggedIn && (
                             <Route path="/login" element={<Login />} />
                         )}
-                        {authCtx.userStatus.userIsLoggedIn && (
+                        {authCtx.isLoggedIn && (
                             <Route path="/login" element={<Navigate to="/" />} />
                         )}
-                        {!authCtx.userStatus.userIsLoggedIn && (
+                        {!authCtx.isLoggedIn && (
                             <Route path="/sign-up" element={<SignUp />} />
                         )}
-                        {authCtx.userStatus.userIsLoggedIn && (
+                        {authCtx.isLoggedIn && (
                             <Route path="/sign-up" element={<Navigate to="/" />} />
                         )}
-                        {!authCtx.userStatus.userIsLoggedIn && (
+                        {!authCtx.isLoggedIn && (
                             <Route path="/my-account" element={<Login />} />
                         )}
-                        {authCtx.userStatus.userIsLoggedIn && (
+                        {authCtx.isLoggedIn && (
                             <Route path="/my-account/*" element={<UserProfile />} />
                         )}
                     </Routes>

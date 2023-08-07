@@ -15,19 +15,22 @@ const Login = () => {
         setIsLoading(true);
 
         try {
+            // const res = await axios({
+            //     method: 'POST',
+            //     url: `${NATOURS_API}/api/v1/users/login`,
+            //     data: loginData,
+            //     withCredentials: true,
+            // });
             const res = await axios({
                 method: 'POST',
                 url: `${NATOURS_API}/api/v1/users/login`,
                 data: loginData,
-                withCredentials: true,
             });
 
-            console.log(res);
-
             const userData = res.data.user;
-            // console.log(userData);
 
-            authCtx.login(true, userData); // meaning d user is logged in cuz we dont store the token
+            // authCtx.login(true, userData); // for httpOnly functionality
+            authCtx.login(res.data.token, userData); // for local storage
 
             // // notify the user
             authCtx.setNotification({
@@ -35,13 +38,12 @@ const Login = () => {
                 message: `welcome ${userData.name.split(' ')[0]}`,
             });
 
-            // // redirect to the homepage
-            navigate('/', { replace: true });
+            // redirect to the homepage
+            navigate('/');
         } catch (err) {
-            console.log(err);
             authCtx.setNotification({
                 status: 'error',
-                message: err.message,
+                message: err.response.data.message,
             });
         }
 
@@ -52,12 +54,3 @@ const Login = () => {
 };
 
 export default Login;
-
-// fetch('https://natours-api-mw9e.onrender.com/api/v1/users/getLoggedInStatus', {
-//     method: 'POST',
-//     body: JSON.stringify(),
-//     headers: {
-//         'content-Type': 'application./json',
-//         authorization: `Bearer ${token}`,
-//     },
-// });

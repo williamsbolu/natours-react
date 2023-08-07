@@ -1,0 +1,10 @@
+.bookings__container {
+    max-width: 100rem;
+    padding: 0 4rem;
+}
+
+.bookings__item--list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2.5rem;
+}
