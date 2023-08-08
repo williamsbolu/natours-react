@@ -34,7 +34,9 @@ const UserSettings = (props) => {
         } catch (err) {
             console.log(err);
             // if the request was rejected by d server, the we output the server response message
-            if (err.response.status === 401) {
+            if (!err.response) {
+                setError('Something went wrong. Try again later.');
+            } else if (err.response.status === 401) {
                 setError(err.response.data.message);
             } else {
                 setError('Could not connect to the server. Try again later.');
