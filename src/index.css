@@ -367,9 +367,18 @@ body {
 
 
 @media only screen and (max-width: 600px) {
+  .heading-primary {
+    width: 100%;
+    font-size: 3.2rem;
+  }
+
   .heading-tertirary {
     width: 40%;
     font-size: 2.3rem;
+  }
+
+  .heading-secondary {
+    font-size: 1.9rem;
   }
 }
 

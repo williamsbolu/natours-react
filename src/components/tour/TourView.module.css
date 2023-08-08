@@ -359,6 +359,7 @@
         top: 40%;
         left: 50%;
         transform: translate(-50%, -50%);
+        width: 60%;
     }
 }
 
@@ -438,9 +439,6 @@
 }
 
 @media only screen and (max-width: 800px) {
-    .section-cta h2 {
-        font-size: 2rem;
-    }
 
     .section-cta button {
         font-size: 1.4rem;
@@ -448,5 +446,29 @@
 
     .cta__text {
         font-size: 1.7rem;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .heading-box {
+        width: 65%;
+        top: 45%;
+    }
+
+    .description-box {
+        padding: 7rem 2.5rem;
+    }
+
+    .cta__text,
+    .description__text {
+        font-size: 1.6rem;
+    }
+
+    .cta {
+        padding: 4rem 3rem 4rem 14rem;
+    }
+
+    .section-cta button {
+        justify-self: stretch;
     }
 }
