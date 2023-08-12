@@ -41,6 +41,7 @@ const Login = () => {
             // redirect to the homepage
             navigate('/');
         } catch (err) {
+            console.log(err);
             authCtx.setNotification({
                 status: 'error',
                 message: err.response.data.message,
