@@ -102,3 +102,18 @@
     outline: none;
     background-color: #2e864b;
 }
+
+@media only screen and (max-width: 600px) {
+
+    .login-form {
+        max-width: 100%;
+        margin: 8rem 2rem;
+        padding: 5rem 2rem;
+    }
+
+    .login-form p {
+        color: #eb4d4b;
+        font-size: 1.4rem;
+        padding-top: .9rem;
+    }
+}

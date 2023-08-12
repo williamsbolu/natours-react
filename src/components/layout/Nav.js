@@ -6,7 +6,9 @@ import logoWhite from '../../assets/logo-white.png';
 import { NATOURS_API } from '../../lib/api';
 import { useContext } from 'react';
 
-const Header = () => {
+import icons from '../../assets/icons.svg';
+
+const Header = (props) => {
     const authCtx = useContext(AuthContext);
 
     return (
@@ -14,6 +16,12 @@ const Header = () => {
             <Link to="/" className={styles.navlink}>
                 All tours
             </Link>
+
+            <button className={styles['menu-btn']} onClick={props.onShowMenu}>
+                <svg>
+                    <use xlinkHref={`${icons}#icon-menu`} />
+                </svg>
+            </button>
 
             <div className={styles['header-logo']}>
                 <img src={logoWhite} alt="Natours-logo white" />

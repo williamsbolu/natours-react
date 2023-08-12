@@ -2,7 +2,7 @@ import styles from './Footer.module.css';
 import logoGreen from '../../assets/logo-green.png';
 import { Link } from 'react-router-dom';
 
-const Footer = (props) => {
+const Footer = () => {
     return (
         <footer className={styles.footer}>
             <div>
