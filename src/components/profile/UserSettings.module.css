@@ -14,3 +14,13 @@
     height: 1px;
     background-color: #e0e0e0;
 }
+
+@media only screen and (max-width: 600px) {
+    .user-view__form-container {
+        padding: 0 2rem;
+    }
+
+    .user-view__form-container h2 {
+        padding-top: 0;
+    }
+}

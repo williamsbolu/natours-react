@@ -363,6 +363,12 @@ body {
   .ma-bt-lg {
     margin-bottom: 2.5rem !important;
   }
+
+  .form__user-photo {
+    height: 5.5rem;
+    width: 5.5rem;
+    margin-right: 1.9rem;
+  }
 }
 
 
@@ -379,6 +385,11 @@ body {
 
   .heading-secondary {
     font-size: 1.9rem;
+  }
+
+  .btn--small {
+    font-size: 1.3rem;
+    padding: 1.25rem 3rem;
   }
 }
 
