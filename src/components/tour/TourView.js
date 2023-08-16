@@ -12,7 +12,7 @@ const TourView = (props) => {
     const formattedDate = new Date(props.startDate).toDateString();
     const tourDescriptions = props.description.split('\n');
 
-    const displayMap = (locations) => {
+    useEffect(() => {
         mapboxgl.accessToken =
             'pk.eyJ1Ijoid2lsbHRlYyIsImEiOiJjbGljdWZhOTUwMG8wM2VxajBzdDRpcXAwIn0.thm3x1MzEIvxg3q4Ct_q4w';
 
@@ -28,7 +28,7 @@ const TourView = (props) => {
         // we get access to the mapbox object because we include the mapbox library at the begining of our page(in the head"script")
         const bounds = new mapboxgl.LngLatBounds();
 
-        locations.forEach((loc) => {
+        props.locations.forEach((loc) => {
             // Create marker
             const el = document.createElement('div');
             el.className = 'marker';
@@ -62,10 +62,8 @@ const TourView = (props) => {
                 right: 100,
             },
         });
-    };
 
-    useEffect(() => {
-        displayMap(props.locations);
+        return () => map.remove();
     }, [props.locations]);
 
     return (

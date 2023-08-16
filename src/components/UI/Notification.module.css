@@ -23,3 +23,10 @@
     font-weight: 400;
     letter-spacing: 1px;
 }
+
+
+@media only screen and (max-width: 600px) {
+    .cart-detail-box p {
+        font-size: 1.6rem;
+    }
+}
