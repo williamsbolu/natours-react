@@ -29,7 +29,6 @@ const Layout = (props) => {
     }, [authCtx]);
 
     const menuDisplayHandler = () => {
-        console.log(menuIsEnabled);
         setMenuIsEnabled((prevState) => !prevState);
     };
 

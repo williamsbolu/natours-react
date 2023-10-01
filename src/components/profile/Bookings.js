@@ -1,5 +1,4 @@
 import { useEffect, useContext, useCallback, useState } from 'react';
-import useHttp from '../../hooks/use-http';
 
 import BookingsItem from './BookingsItem';
 import AuthContext from '../../store/auth-context';

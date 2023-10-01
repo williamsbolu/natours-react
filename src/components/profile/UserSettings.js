@@ -13,6 +13,17 @@ const UserSettings = (props) => {
     const [error, setError] = useState(null);
     const [user, setUser] = useState(null);
 
+    const [updateFormIsValid, setUpdateFormIsValid] = useState({
+        enteredNameIsValid: true,
+        enteredEmailIsValid: true,
+    });
+
+    const [passwordFormIsValid, setPasswordFormIsValid] = useState({
+        enteredCurrentPasswordIsValid: true,
+        enteredPasswordIsValid: true,
+        enteredPasswordConfirmIsValid: true,
+    });
+
     const nameInputRef = useRef();
     const emailInputRef = useRef();
     const photoInputRef = useRef();
@@ -29,10 +40,8 @@ const UserSettings = (props) => {
                 },
             });
 
-            console.log(res);
             setUser(res.data.data.data);
         } catch (err) {
-            console.log(err);
             // if the request was rejected by d server, the we output the server response message
             if (!err.response) {
                 setError('Something went wrong. Try again later.');
@@ -48,23 +57,6 @@ const UserSettings = (props) => {
     useEffect(() => {
         getUserData();
     }, [getUserData]);
-
-    // const { sendRequest, status, data: user, error } = useHttp(getUserData, true);
-
-    // useEffect(() => {
-    //     sendRequest();
-    // }, [sendRequest]);
-
-    const [updateFormIsValid, setUpdateFormIsValid] = useState({
-        enteredNameIsValid: true,
-        enteredEmailIsValid: true,
-    });
-
-    const [passwordFormIsValid, setPasswordFormIsValid] = useState({
-        enteredCurrentPasswordIsValid: true,
-        enteredPasswordIsValid: true,
-        enteredPasswordConfirmIsValid: true,
-    });
 
     const updateFormHandler = (e) => {
         e.preventDefault();
@@ -82,7 +74,7 @@ const UserSettings = (props) => {
             enteredEmailIsValid,
         });
 
-        if (!enteredNameIsValid && !enteredEmailIsValid) return;
+        if (!enteredNameIsValid || !enteredEmailIsValid) return;
 
         const form = new FormData();
         form.append('name', enteredName);

@@ -1,7 +1,9 @@
 import mapboxgl from 'mapbox-gl';
-import { Fragment, useEffect } from 'react';
+import { Fragment, useContext, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './TourView.module.css';
 
+import AuthContext from '../../store/auth-context';
 import { NATOURS_API } from '../../lib/api';
 import icons from '../../assets/icons.svg';
 import logoWhite from '../../assets/logo-white.png';
@@ -9,6 +11,8 @@ import TourGuides from './TourGuides';
 import ReviewCard from './ReviewCard';
 
 const TourView = (props) => {
+    const authCtx = useContext(AuthContext);
+    const navigate = useNavigate();
     const formattedDate = new Date(props.startDate).toDateString();
     const tourDescriptions = props.description.split('\n');
 
@@ -65,6 +69,12 @@ const TourView = (props) => {
 
         return () => map.remove();
     }, [props.locations]);
+
+    const tourBookingHandler = () => {
+        if (!authCtx.isLoggedIn) return navigate('/login');
+
+        // Book the tour Here
+    };
 
     return (
         <Fragment>
@@ -245,7 +255,11 @@ const TourView = (props) => {
                             {props.duration} days. 1 adventure. Infinite memories. Make it
                             yours today!
                         </p>
-                        <button className="btn btn--green">Book tour now!</button>
+                        <button className="btn btn--green" onClick={tourBookingHandler}>
+                            {!authCtx.isLoggedIn
+                                ? 'Log in to book tour'
+                                : 'Book tour now!'}
+                        </button>
                     </div>
                 </div>
             </section>

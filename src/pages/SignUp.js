@@ -41,7 +41,7 @@ const SignUp = () => {
             // redirect to the homepage
             navigate('/');
         } catch (err) {
-            console.log(err);
+            // console.log(err);
 
             if (
                 err.response.status === 400 &&

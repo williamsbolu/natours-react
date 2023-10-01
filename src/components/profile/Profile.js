@@ -26,11 +26,11 @@ const Profile = () => {
                 },
             });
 
-            authCtx.updateUserDetails(res.data.data.user);
+            authCtx.updateUserDetails(res.data.data.user); // delete
 
             authCtx.setNotification({
                 status: 'complete',
-                message: `User data Updated!`,
+                message: `User data Updated`,
             });
         } catch (err) {
             authCtx.setNotification({
@@ -44,14 +44,6 @@ const Profile = () => {
     const changePasswordHandler = async (passwordData) => {
         setPasswordChangeIsLoading(true);
         try {
-            // const response = await fetch(`${NATOURS_API}/api/v1/users/updateMyPassword`, {
-            //     method: 'PATCH',
-            //     headers: {
-            //         'Content-Type': 'application/json',
-            //     },
-            //     body: JSON.stringify(passwordData),
-            //     credentials: 'include',
-            // });
             await axios({
                 method: 'PATCH',
                 url: `${NATOURS_API}/api/v1/users/updateMyPassword`,

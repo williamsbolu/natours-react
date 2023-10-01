@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { sleep } from '../lib/api';
 // import React, { useCallback, useEffect, useState } from 'react';
 // import { NATOURS_API } from '../lib/api';
 // import axios from 'axios';
@@ -11,14 +12,6 @@ const AuthContext = React.createContext({
     token: '',
     isLoggedIn: false,
     updateUserDetails: () => {},
-    //
-    userStatus: {
-        userIsLoggedIn: false,
-        userPhoto: '',
-        userName: '',
-        userEmail: '',
-        userRole: '',
-    },
     login: () => {},
     logout: () => {},
     notification: null,
@@ -27,13 +20,6 @@ const AuthContext = React.createContext({
 
 export const AuthContextProvider = (props) => {
     const navigate = useNavigate();
-    // const [userStatus, setUserStatus] = useState({
-    //     userIsLoggedIn: false,
-    //     userPhoto: '',
-    //     userName: '',
-    //     userEmail: '',
-    //     userRole: '',
-    // });
     const [notification, setNotification] = useState(null);
 
     // for the localstorage function
@@ -59,6 +45,8 @@ export const AuthContextProvider = (props) => {
     };
 
     const logoutHandler = async () => {
+        await sleep(1000);
+
         localStorage.removeItem('token');
         localStorage.removeItem('userPhoto');
         localStorage.removeItem('userName');
@@ -78,7 +66,7 @@ export const AuthContextProvider = (props) => {
         setNotification(notificationData);
     };
 
-    console.log(userIsLoggedIn ? 'I am logged in' : ' i am not logged in');
+    // console.log(userIsLoggedIn ? 'I am logged in' : ' i am not logged in');
 
     const contextValue = {
         userPhoto,
@@ -87,8 +75,6 @@ export const AuthContextProvider = (props) => {
         token,
         isLoggedIn: userIsLoggedIn,
         updateUserDetails,
-        //
-        // userStatus,
         login: loginHandler,
         logout: logoutHandler,
         notification,
